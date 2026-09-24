@@ -1,0 +1,23 @@
+Q.1 Find employees with the lowest salary
+
+
+SELECT * FROM employees ORDER BY salary ASC LIMIT 1;
+SELECT * FROM employees WHERE salary = (SELECT MIN(salary) FROM employees);
+
+
+
+
+
+
+
+
+
+SELECT * FROM employees WHERE salary < (SELECT MAX(salary) FROM employees);
+
+WITH emp_cte AS (
+	SELECT MAX(salary) FROM employees
+)
+SELECT *
+FROM employees e
+INNER JOIN emp_cte c
+On e.max(salary) = 
